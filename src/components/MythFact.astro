@@ -1,0 +1,79 @@
+---
+const pairs = [
+  {
+    myth: 'Only smokers get lung cancer.',
+    fact: "Non-smokers can develop it too — driven by air pollution, secondhand smoke, radon, or years of workplace exposure.",
+  },
+  {
+    myth: "If I'm not coughing, my lungs are fine.",
+    fact: 'Early changes often show no symptoms at all — that\'s exactly why screening conversations matter.',
+  },
+  {
+    myth: "Cooking smoke indoors isn't a real risk.",
+    fact: 'Daily fumes without ventilation can add up over the years. Cracking a window genuinely helps.',
+  },
+  {
+    myth: 'Lung cancer only happens to older people.',
+    fact: "It's less common young, but exposure is cumulative — habits now quietly shape risk later.",
+  },
+  {
+    myth: 'Getting screened means something is already wrong.',
+    fact: "Screening is a preventive check-in, like an eye test. Most results are simply reassuring.",
+  },
+];
+---
+
+<section id="myths" class="scroll-mt-24 py-16 sm:py-24">
+  <div class="section-wrap">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="eyebrow">Myth vs Fact</span>
+      <h2 class="mt-4 text-3xl font-bold text-cacao sm:text-4xl">
+        Let's clear a few things up.
+      </h2>
+      <p class="mt-4 text-cacao/70">Tap any card to flip it.</p>
+    </div>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {pairs.map((pair, i) => (
+        <button
+          type="button"
+          class={`myth-card reveal reveal-delay-${(i % 4) + 1} group relative h-56 w-full [perspective:1400px] text-left`}
+          aria-pressed="false"
+        >
+          <div class="myth-card-inner relative h-full w-full rounded-3xl shadow-card transition-transform duration-500 [transform-style:preserve-3d]">
+            <div class="absolute inset-0 flex flex-col justify-between rounded-3xl bg-dustyRose/30 p-6 [backface-visibility:hidden]">
+              <span class="w-fit rounded-full bg-cacao px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-peony">
+                Myth
+              </span>
+              <p class="font-display text-lg font-semibold text-cacao">{pair.myth}</p>
+              <span class="text-xs font-bold text-cacao/50">Tap to reveal the fact &rarr;</span>
+            </div>
+
+            <div class="absolute inset-0 flex flex-col justify-between rounded-3xl bg-leaf/30 p-6 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+              <span class="w-fit rounded-full bg-jungle px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-peony">
+                Fact
+              </span>
+              <p class="text-sm font-semibold text-cacao">{pair.fact}</p>
+              <span class="text-xs font-bold text-cacao/50">&larr; Tap to flip back</span>
+            </div>
+          </div>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .myth-card[aria-pressed='true'] .myth-card-inner {
+    transform: rotateY(180deg);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.myth-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const pressed = card.getAttribute('aria-pressed') === 'true';
+      card.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+    });
+  });
+</script>

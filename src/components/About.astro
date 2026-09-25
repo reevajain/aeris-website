@@ -1,0 +1,67 @@
+---
+import HomeIcon from './icons/HomeIcon.astro';
+import Lungs from './icons/Lungs.astro';
+import FamilyIcon from './icons/FamilyIcon.astro';
+import PlantIcon from './icons/PlantIcon.astro';
+
+const risks = [
+  {
+    icon: HomeIcon,
+    title: 'Kitchen air',
+    copy: 'Daily cooking smoke adds up more than most people realise.',
+    tone: 'bg-dustyRose/25',
+  },
+  {
+    icon: Lungs,
+    title: 'Workplace exposure',
+    copy: 'Dust, fumes and chemicals at work are risks worth naming.',
+    tone: 'bg-sky/30',
+  },
+  {
+    icon: FamilyIcon,
+    title: 'Secondhand smoke',
+    copy: 'Sharing a home with a smoker changes your own risk too.',
+    tone: 'bg-leaf/25',
+  },
+  {
+    icon: PlantIcon,
+    title: 'Outdoor air quality',
+    copy: 'Where you live and commute quietly shapes lung health.',
+    tone: 'bg-lavender/35',
+  },
+];
+---
+
+<section id="about" class="scroll-mt-24 py-16 sm:py-24">
+  <div class="section-wrap">
+    <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-16">
+      <div class="reveal">
+        <span class="eyebrow">Why AERIS exists</span>
+        <h2 class="mt-4 text-3xl font-bold text-cacao sm:text-4xl">
+          Lung cancer risk isn't only about smoking.
+        </h2>
+        <p class="mt-5 max-w-md text-cacao/75">
+          AERIS is a youth-led awareness project that names the quieter
+          risks — polluted air, cooking fumes, workplace exposure — and
+          turns them into a friendly, five-minute check-in. We're not here
+          to diagnose. We're here to start the conversation your family
+          might not know it needs.
+        </p>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {risks.map((risk, i) => (
+          <div
+            class={`reveal reveal-delay-${(i % 4) + 1} rounded-3xl ${risk.tone} p-6 shadow-card transition-transform duration-300 hover:-translate-y-1`}
+          >
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/70 text-cacao">
+              <risk.icon class="h-6 w-6" />
+            </div>
+            <h3 class="mt-4 font-display text-lg font-bold text-cacao">{risk.title}</h3>
+            <p class="mt-1.5 text-sm text-cacao/70">{risk.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

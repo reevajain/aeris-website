@@ -1,0 +1,102 @@
+---
+const links = [
+  { href: '#about', label: 'About' },
+  { href: '#quiz', label: 'Risk Translator' },
+  { href: '#myths', label: 'Myths' },
+  { href: '#relay', label: 'Risk Relay' },
+  { href: '#involved', label: 'Get Involved' },
+];
+---
+
+<header class="sticky top-0 z-50 w-full">
+  <div class="section-wrap pt-4">
+    <nav
+      class="flex items-center justify-between gap-4 rounded-full border border-white/60 bg-peony/80 px-4 py-2.5 shadow-card backdrop-blur-md sm:px-6"
+    >
+      <a href="#top" class="flex items-center gap-2 font-display text-xl font-bold text-cacao">
+        <span
+          class="flex h-9 w-9 items-center justify-center rounded-full bg-cacao text-peony"
+          aria-hidden="true"
+        >
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c-2 3-2 5 0 8 2-3 2-5 0-8Z" />
+            <path d="M6 21c-2-5 1-9 6-9s8 4 6 9" />
+          </svg>
+        </span>
+        AERIS
+      </a>
+
+      <ul class="hidden items-center gap-1 md:flex">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="rounded-full px-4 py-2 text-sm font-bold text-cacao/80 transition-colors hover:bg-dustyRose/30 hover:text-cacao"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <a href="#quiz" class="pill-btn hidden bg-cacao text-peony sm:inline-flex text-sm !px-5 !py-2.5">
+        Take the quiz
+      </a>
+
+      <button
+        id="nav-toggle"
+        type="button"
+        class="flex h-10 w-10 items-center justify-center rounded-full text-cacao md:hidden"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg id="nav-icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg id="nav-icon-close" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </nav>
+
+    <div
+      id="nav-mobile-menu"
+      class="mt-2 hidden flex-col gap-1 rounded-3xl border border-white/60 bg-peony/95 p-3 shadow-card md:hidden"
+    >
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="nav-mobile-link rounded-2xl px-4 py-3 text-sm font-bold text-cacao/80 hover:bg-dustyRose/30 hover:text-cacao"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-mobile-menu');
+  const iconOpen = document.getElementById('nav-icon-open');
+  const iconClose = document.getElementById('nav-icon-close');
+
+  const closeMenu = () => {
+    menu?.classList.add('hidden');
+    iconOpen?.classList.remove('hidden');
+    iconClose?.classList.add('hidden');
+    toggle?.setAttribute('aria-expanded', 'false');
+  };
+
+  toggle?.addEventListener('click', () => {
+    const isHidden = menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    iconOpen?.classList.toggle('hidden');
+    iconClose?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+  });
+
+  document.querySelectorAll('.nav-mobile-link').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>

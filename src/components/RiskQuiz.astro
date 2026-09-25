@@ -1,0 +1,22 @@
+---
+import RiskQuizIsland from '../islands/RiskQuizIsland.tsx';
+---
+
+<section id="quiz" class="scroll-mt-24 py-16 sm:py-24">
+  <div class="section-wrap">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <span class="eyebrow">The Invisible Risk Translator</span>
+      <h2 class="mt-4 text-3xl font-bold text-cacao sm:text-4xl">
+        Seven quick questions. Zero judgment.
+      </h2>
+      <p class="mt-4 text-cacao/70">
+        Answer honestly about your everyday habits and environment. You'll get
+        a friendly, plain-language result — never a diagnosis.
+      </p>
+    </div>
+
+    <div class="reveal reveal-delay-2 mt-10">
+      <RiskQuizIsland client:visible />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+import SparkleIcon from './icons/SparkleIcon.astro';
+---
+
+<footer class="mt-24 rounded-t-[3rem] bg-cacao px-6 pb-10 pt-14 text-peony sm:px-8">
+  <div class="section-wrap">
+    <div class="grid gap-10 sm:grid-cols-2 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 font-display text-2xl font-bold">
+          <SparkleIcon class="h-5 w-5 text-leaf" />
+          AERIS
+        </div>
+        <p class="mt-3 max-w-sm text-sm leading-relaxed text-peony/80">
+          Awareness &amp; Education for Invisible Risk and Screening — a
+          youth-led project turning quiet, everyday exposures into
+          kitchen-table conversations.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-peony/60">Explore</p>
+        <ul class="mt-3 space-y-2 text-sm text-peony/85">
+          <li><a href="#about" class="hover:text-leaf">About AERIS</a></li>
+          <li><a href="#quiz" class="hover:text-leaf">Risk Translator</a></li>
+          <li><a href="#myths" class="hover:text-leaf">Myth vs Fact</a></li>
+          <li><a href="#relay" class="hover:text-leaf">Risk Relay</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-peony/60">Get Involved</p>
+        <ul class="mt-3 space-y-2 text-sm text-peony/85">
+          <li><a href="#involved" class="hover:text-leaf">Join the relay</a></li>
+          <li>
+            <a href="mailto:hello@aerishealth.org" class="hover:text-leaf">hello@aerishealth.org</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col gap-4 border-t border-peony/15 pt-6 text-xs text-peony/60 sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {new Date().getFullYear()} AERIS. A student-led awareness initiative.</p>
+      <p class="max-w-lg sm:text-right">
+        AERIS is an awareness tool, not medical advice or a diagnosis. Always
+        talk to a licensed doctor about your personal health and screening
+        options.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Nunito:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-peony text-cacao font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-dustyRose/60;
+  }
+}
+
+@layer components {
+  .section-wrap {
+    @apply mx-auto max-w-6xl px-6 sm:px-8;
+  }
+
+  .pill-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5
+      font-body font-bold tracking-wide transition-all duration-300
+      shadow-card hover:-translate-y-0.5 hover:shadow-soft active:translate-y-0;
+  }
+
+  .eyebrow {
+    @apply text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-jungle/80;
+  }
+}
+
+@layer utilities {
+  /* Scroll-reveal: toggled by the IntersectionObserver in BaseLayout */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 {
+    transition-delay: 0.08s;
+  }
+  .reveal-delay-2 {
+    transition-delay: 0.16s;
+  }
+  .reveal-delay-3 {
+    transition-delay: 0.24s;
+  }
+  .reveal-delay-4 {
+    transition-delay: 0.32s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}

@@ -1,0 +1,119 @@
+---
+import SparkleIcon from './icons/SparkleIcon.astro';
+
+const ways = [
+  { title: 'Take & share the quiz', copy: 'The easiest first step — costs nothing but two minutes.' },
+  { title: 'Become an ambassador', copy: 'Host a 15-minute Risk Relay chat at school, work, or home.' },
+  { title: 'Follow along', copy: "We'll post plain-language lung health tips, not scary statistics." },
+];
+---
+
+<section id="involved" class="scroll-mt-24 py-16 sm:py-24">
+  <div class="section-wrap">
+    <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-16">
+      <div class="reveal">
+        <span class="eyebrow">Get involved</span>
+        <h2 class="mt-4 text-3xl font-bold text-cacao sm:text-4xl">
+          Join a relay that starts with you.
+        </h2>
+        <p class="mt-4 max-w-md text-cacao/75">
+          AERIS grows one honest conversation at a time. Leave your email and
+          we'll send occasional, no-pressure updates — new resources, ways to
+          volunteer, and quiz milestones.
+        </p>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-3">
+          {ways.map((way) => (
+            <div class="rounded-2xl bg-white/60 p-4 shadow-card">
+              <SparkleIcon class="h-4 w-4 text-grass" />
+              <p class="mt-2 text-sm font-bold text-cacao">{way.title}</p>
+              <p class="mt-1 text-xs text-cacao/60">{way.copy}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2 rounded-[2.25rem] bg-white/70 p-7 shadow-soft sm:p-10">
+        <form id="involved-form" class="space-y-4" novalidate>
+          <div>
+            <label for="involved-name" class="text-xs font-bold uppercase tracking-widest text-cacao/50">
+              Name
+            </label>
+            <input
+              id="involved-name"
+              name="name"
+              type="text"
+              placeholder="Your name"
+              class="mt-1.5 w-full rounded-2xl border-2 border-cacao/10 bg-peony/40 px-4 py-3 text-sm text-cacao placeholder:text-cacao/35 outline-none transition-colors focus:border-cacao/40"
+            />
+          </div>
+
+          <div>
+            <label for="involved-email" class="text-xs font-bold uppercase tracking-widest text-cacao/50">
+              Email
+            </label>
+            <input
+              id="involved-email"
+              name="email"
+              type="email"
+              required
+              placeholder="you@example.com"
+              class="mt-1.5 w-full rounded-2xl border-2 border-cacao/10 bg-peony/40 px-4 py-3 text-sm text-cacao placeholder:text-cacao/35 outline-none transition-colors focus:border-cacao/40"
+            />
+          </div>
+
+          <div>
+            <label for="involved-interest" class="text-xs font-bold uppercase tracking-widest text-cacao/50">
+              I'm most interested in
+            </label>
+            <select
+              id="involved-interest"
+              name="interest"
+              class="mt-1.5 w-full rounded-2xl border-2 border-cacao/10 bg-peony/40 px-4 py-3 text-sm text-cacao outline-none transition-colors focus:border-cacao/40"
+            >
+              <option>Sharing the quiz with family</option>
+              <option>Becoming a student ambassador</option>
+              <option>Partnering as an organisation</option>
+              <option>Just staying updated</option>
+            </select>
+          </div>
+
+          <button type="submit" class="pill-btn w-full bg-cacao text-peony">
+            Send it over
+          </button>
+
+          <p id="involved-note" class="text-center text-xs text-cacao/50">
+            This opens your email app for now — a full sign-up form is on
+            its way.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('involved-form') as HTMLFormElement | null;
+  const note = document.getElementById('involved-note');
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const name = String(data.get('name') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const interest = String(data.get('interest') || '').trim();
+
+    if (!email) {
+      if (note) note.textContent = 'Add your email so we know where to reach you.';
+      return;
+    }
+
+    const subject = encodeURIComponent('I want to join the AERIS Risk Relay');
+    const body = encodeURIComponent(
+      `Name: ${name || '—'}\nEmail: ${email}\nInterested in: ${interest}\n\n(This came from the AERIS website Get Involved form.)`
+    );
+
+    window.location.href = `mailto:hello@aerishealth.org?subject=${subject}&body=${body}`;
+    if (note) note.textContent = "Opening your email app — thank you for joining the relay!";
+  });
+</script>

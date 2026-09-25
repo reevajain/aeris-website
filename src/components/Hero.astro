@@ -1,0 +1,59 @@
+---
+import InvisibleVisibleReveal from '../islands/InvisibleVisibleReveal.tsx';
+import LeafIcon from './icons/LeafIcon.astro';
+import SparkleIcon from './icons/SparkleIcon.astro';
+---
+
+<section class="relative overflow-hidden pb-20 pt-14 sm:pb-28 sm:pt-20" id="hero">
+  <!-- decorative background blobs -->
+  <div class="pointer-events-none absolute -left-24 -top-16 h-72 w-72 rounded-full bg-dustyRose/30 blur-3xl" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -right-20 top-40 h-80 w-80 rounded-full bg-sky/30 blur-3xl" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute left-1/3 bottom-0 h-56 w-56 rounded-full bg-leaf/20 blur-3xl" aria-hidden="true"></div>
+
+  <div class="section-wrap relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+    <div>
+      <span class="eyebrow reveal inline-flex items-center gap-2 rounded-full bg-white/60 px-4 py-1.5">
+        <SparkleIcon class="h-3.5 w-3.5 text-grass" />
+        A youth-led lung health project
+      </span>
+
+      <h1 class="reveal reveal-delay-1 relative mt-5 max-w-xl text-4xl font-bold leading-[1.1] text-cacao sm:text-5xl lg:text-[3.25rem]">
+        <LeafIcon class="absolute -right-2 -top-8 h-8 w-8 rotate-12 text-leaf animate-float sm:-right-6 sm:h-10 sm:w-10" />
+        Some risks are invisible. Let's make them visible, together.
+      </h1>
+
+      <p class="reveal reveal-delay-2 mt-6 max-w-md text-base text-cacao/75 sm:text-lg">
+        AERIS turns the everyday air around you — kitchens, commutes,
+        workplaces — into a five-minute conversation about lung health.
+        No jargon, no scare tactics.
+      </p>
+
+      <div class="reveal reveal-delay-3 mt-8 flex flex-wrap items-center gap-4">
+        <a href="#quiz" class="pill-btn bg-cacao text-peony">
+          Take the Risk Translator
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="#about" class="pill-btn bg-white/70 text-cacao hover:bg-white">
+          What is AERIS?
+        </a>
+      </div>
+
+      <div class="reveal reveal-delay-4 mt-10 flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-cacao/50">
+        <span>Not medical advice</span>
+        <span class="h-1 w-1 rounded-full bg-cacao/30"></span>
+        <span>2-minute quiz</span>
+        <span class="h-1 w-1 rounded-full bg-cacao/30"></span>
+        <span>Built for every generation</span>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2 mx-auto w-full">
+      <InvisibleVisibleReveal client:load />
+      <p class="mt-4 text-center text-xs font-semibold text-cacao/45">
+        Move your cursor (or finger) across the scene above.
+      </p>
+    </div>
+  </div>
+</section>
